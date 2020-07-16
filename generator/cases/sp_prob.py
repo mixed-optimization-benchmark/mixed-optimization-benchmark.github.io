@@ -47,7 +47,7 @@ def get_case():
     
     # design variables
     vartype=["cont","cont",("cate",2)]
-    xlimits = np.array([[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0]])
+    xlimits = np.array([[-5.0,5.0],[-5.0,5.0],[0.0,1.0],[0.0,1.0]])
     design_variables={"vartype":vartype, "bounds": xlimits}
            
    # solution

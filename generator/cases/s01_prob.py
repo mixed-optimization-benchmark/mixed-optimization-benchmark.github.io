@@ -55,11 +55,11 @@ def get_case():
     
     # design variables
     vartype=["cont",("cate",10)]
-    xlimits = np.array([ [0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0]])
+    xlimits = np.array([ [0.0,5.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0]])
     design_variables={"vartype":vartype, "bounds": xlimits}
            
    # solution
-    sol = {"value": -2.32959383, "tol": 1e-6}
+    sol = {"value": -1561.5, "tol": 1e-6}
     
     case = {
         "models": mod_obj , 
