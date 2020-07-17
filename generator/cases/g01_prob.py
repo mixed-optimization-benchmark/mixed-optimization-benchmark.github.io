@@ -71,7 +71,7 @@ def get_case():
            
     
    # solution
-    sol = {"value": 38.08499454, "tol": 1e-6}
+    sol = {"value": 38.08474427, "tol": 1e-6}
     
     case = {
         "models": mod_obj , 
