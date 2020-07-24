@@ -68,7 +68,7 @@ def get_case():
     design_variables={"vartype":vartype, "bounds": xlimits}
            
    # solution
-    sol = {"value": -10.36859528, "tol": 1e-6}
+    sol = {"value": -14.186036350718284, "tol": 1e-6}
     #don't know 
     
     case = {

@@ -52,8 +52,7 @@ def get_case():
     xlimits = np.array([[-5.0, 10.0],[0.0,15.0]])
     design_variables={"vartype":vartype, "bounds": xlimits}
    # solution
-    sol = {"value": 0.49398265, "tol": 1e-6}
-    #[3.         2.38655687]
+    sol = {"value": 0.49398053, "tol": 1e-6}
     case = {
         "models": mod_obj ,
         "vars":design_variables,

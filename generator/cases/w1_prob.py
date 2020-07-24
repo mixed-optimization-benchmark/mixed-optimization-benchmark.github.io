@@ -60,7 +60,7 @@ def get_case():
     design_variables={"vartype":vartype, "bounds": xlimits}
            
    # solution
-    sol = {"value": -1793.0129033, "tol": 1e-6}
+    sol = {"value": -2389.627479486391, "tol": 1e-6}
     
     case = {
         "models": mod_obj , 
