@@ -7,6 +7,7 @@ from smt.surrogate_models import KPLS, KRG, KPLSK
 from smt.utils.options_dictionary import OptionsDictionary
 from smt.applications.application import SurrogateBasedApplication
 from smt.utils.misc import compute_rms_error
+from smt.sampling_methods import LHS
 
 ng=sys.argv[1]
 print('Function ', ng)
@@ -36,19 +37,23 @@ surr=  case["models"]["type"]
 
 if surr== 'KPLS':
     n_comp=  case["models"]["n_components"]
-    s=KPLS(print_global=False,n_comp=n_comp)
+    s=KPLS(print_global=False,n_comp=n_comp,vartype=vartype)
 elif surr=='KRG' :
-    s=KRG(print_global=False)
+    s=KRG(print_global=False,vartype=vartype)
 
 
 
 nb_doe=20
-for DOE in [30,50,100,150]:   
+for DOE in [30,50,100,200,300]:   
+ 
     for k in range(nb_doe) :
         n_doe=2*DOE
-        ego = EGO(n_iter=1,n_doe=n_doe,criterion=criterion, xlimits=xlimits,vartype=vartype,tunnel=tunnel)
-        x_opt, y_opt, ind_best, x_data, y_data, x_doe, y_doe = ego.optimize(fun=f)
-        # half the point for the model
+        d=LHS(xlimits=xlimits, criterion="ese")
+        x_data=d(n_doe)
+        x_data=s._project_values(x_data)
+        y_data = f(x_data)
+            
+        
         x_doe=x_data[0:int(n_doe/2)]
         y_doe=y_data[0:int(n_doe/2)]
         filename= os.path.join(dir_name, base_save+"_" + str(k) +"_modval_DOE" +str(DOE)+ suffix_xdoe)
@@ -64,9 +69,9 @@ for DOE in [30,50,100,150]:
         np.save(filename, y_val_true) 
         
               
-        ego.gpr.set_training_values(x_doe, y_doe)
-        ego.gpr.train()
-        y_gp = ego.gpr.predict_values(x_val)
+        s.set_training_values(x_doe, y_doe)
+        s.train()
+        y_gp =s.predict_values(x_val)
         filename= os.path.join(dir_name, base_save+"_"+  str(k)  +"_modval_DOE" +str(DOE)+suffix_yvalest)
         np.save(filename, y_gp) 
         
