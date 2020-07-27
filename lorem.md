@@ -5,3 +5,5 @@ permalink: /lorem/
 ---
 
 Lorem ipsum dolorem sit amet
+
+[test] (./generator/cases/)
