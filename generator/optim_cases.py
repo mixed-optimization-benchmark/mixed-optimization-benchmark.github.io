@@ -32,9 +32,9 @@ surr=  case["models"]["type"]
 
 if surr== 'KPLS':
     n_comp=  case["models"]["n_components"]
-    s=KPLS(print_global=False,n_comp=n_comp)
+    s=KPLS(print_global=False,n_comp=n_comp,vartype=vartype)
 elif surr=='KRG' :
-    s=KRG(print_global=False)
+    s=KRG(print_global=False,vartype=vartype)
 
 
 #20,5,50
@@ -45,12 +45,10 @@ print(n_iter)
 for k in range(n_optim):
     y_save=np.zeros(n_iter)
     
-    ego = EGO(n_doe=n_doe,n_iter=n_iter, criterion=criterion,xlimits=xlimits,qEI=qEI,tunnel=0,vartype=vartype, surrogate=s )
+    ego = EGO(n_doe=n_doe,n_iter=n_iter, criterion=criterion,xlimits=xlimits,qEI=qEI,tunnel=0, surrogate=s )
     x_optk, y_optk, ind_bestk, x_datak, y_datak, x_doek, y_doek = ego.optimize(fun=f)
     y_save=y_datak
     x_save=x_datak
-    print(y_optk)
-    print(x_optk)
     filename= os.path.join(dir_name, base_save+"_" + str(k) +"_optim"+ suffix_xsave)
     np.save(filename, x_save) 
     filename= os.path.join(dir_name, base_save+"_"+  str(k)  +"_optim" +suffix_ysave)

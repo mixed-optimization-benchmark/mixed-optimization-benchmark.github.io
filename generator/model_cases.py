@@ -66,7 +66,7 @@ for DOE in [30,50,100,150]:
               
         ego.gpr.set_training_values(x_doe, y_doe)
         ego.gpr.train()
-        y_gp = ego.gpr.predict_values(x_val,vartype)
+        y_gp = ego.gpr.predict_values(x_val)
         filename= os.path.join(dir_name, base_save+"_"+  str(k)  +"_modval_DOE" +str(DOE)+suffix_yvalest)
         np.save(filename, y_gp) 
         
