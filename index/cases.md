@@ -8,7 +8,7 @@ The table below summarize the proposed test cases. ([excel](https://github.com/m
 
 You can view the full description of a case by clicking on its name.
 
-[Branin\_1\](/cases/) 
+[Branin1](/cases/) 
 
 |Paper                                                                                                                                                   |Name                        |\# Cont. var|\# Int. var|#cate. var|Constraints?|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------|------------|-----------|----------|------------|
