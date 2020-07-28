@@ -10,4 +10,4 @@ Lorem ipsum dolorem sit amet
 
 <img align="left" src="https://raw.githubusercontent.com/mixed-optimization-benchmark/mixed-optimization-benchmark.github.io/master/Cas%20test/Branin_1.PNG" >
 
-@include[my-file.md](https://raw.githubusercontent.com/mixed-optimization-benchmark/mixed-optimization-benchmark.github.io/master/generator/cases/b01_prob.py)
+  <p><iframe src="https://raw.githubusercontent.com/mixed-optimization-benchmark/mixed-optimization-benchmark.github.io/master/generator/cases/b01_prob.py" frameborder="0" height="400"></iframe></p>
