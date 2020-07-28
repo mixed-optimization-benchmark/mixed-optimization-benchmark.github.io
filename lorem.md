@@ -6,4 +6,4 @@ permalink: /lorem/
 
 Lorem ipsum dolorem sit amet
 
-![test](./generator/cases/)
+![test](./generator/cases/b01.py)
