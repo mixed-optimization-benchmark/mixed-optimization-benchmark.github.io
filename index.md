@@ -1,5 +1,7 @@
 ---
 layout: page
+permalink: /index/
+
 ---
 # Mixed Optimization Benchmark
 
