@@ -8,18 +8,17 @@ The table below summarize the proposed test cases. ([excel](https://github.com/m
 
 You can view the full description of a case by clicking on its name.
 
-[Branin_1](/cases/) 
 
 |Paper                                                                                                                                                   |Name                        |\# Cont. var|\# Int. var|#cate. var|Constraints?|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------|------------|-----------|----------|------------|
 |Overview and Comparison of Gaussian Process-Based Surrogate Models for Mixed Continuous and Discrete Variables: Application on Aerospace Design Problems|
-|                                                                                                                                                        | [Branin\_1\](/cases/b01/)  |2           |0          |(2,2)     |No          |
-|                                                                                                                                                        |\[Branin\_2\]/cases/b02/)   |10          |0          |(2,2)     |No          |
-|                                                                                                                                                        |\[Golstein\_1\](/cases/g01/)|2           |0          |(3,3)     |No          |
+|                                                                                                                                                        |[Branin\_1](/cases/b01/)  |2           |0          |(2,2)     |No          |
+|                                                                                                                                                        |[Branin\_2]/cases/b02/)   |10          |0          |(2,2)     |No          |
+|                                                                                                                                                        |[Golstein\_1](/cases/g01/)|2           |0          |(3,3)     |No          |
 |Efficient global optimization of constrained mixed variable problems                                                                                    |                            |            |           |          |
-|                                                                                                                                                        |\[Branin\_3\](/cases/b03/)  |2           |0          |(2,2)     |Yes         |
-|                                                                                                                                                        |\[Branin\_4\](/cases/b04/)  |10          |0          |(2,2)     |Yes         |
-|                                                                                                                                                        |Golstein\_2                 |2           |0          |(3,3)     |Yes         |
+|                                                                                                                                                        |[Branin\_3](/cases/b03/)  |2           |0          |(2,2)     |Yes         |
+|                                                                                                                                                        |[Branin\_4](/cases/b04/)  |10          |0          |(2,2)     |Yes         |
+|                                                                                                                                                        |[Golstein\_2](/cases/g02)         |2           |0          |(3,3)     |Yes         |
 |Group kernels for Gaussian process metamodels with categorical inputs                                                                                   |                            |            |           |          |
 |                                                                                                                                                        |\[Cosine\_1\](/cases/c01)   |1           |0          |(13)      |No          |
 |                                                                                                                                                        |\[Set\_2\](/cases/s02)      |1           |0          |(10)      |No          |
