@@ -3,6 +3,9 @@ layout: page
 title: Lorem Ipsum
 permalink: /cases/
 ---
+### [← back](/index/)
+
+# Test cases
 
 The table below summarize the proposed test cases. ([excel](https://github.com/mixed-optimization-benchmark/mixed-optimization-benchmark.github.io/blob/master/Cas%20test/Tests.xlsx))
 
