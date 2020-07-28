@@ -11,4 +11,9 @@ The goal of this website is to create a database of analytical cases to test Mix
 
 Lorem ipsum
 
-1. [1](/lorem/)
+1. [## Analytic cases](/cases/)
+
+2. [## Methods ](/methods/)
+
+3. [## Results ](/results/)
+
