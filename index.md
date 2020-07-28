@@ -9,11 +9,10 @@ The goal of this website is to create a database of analytical cases to test Mix
 
 ## Table of Contents
 
-Lorem ipsum
 
-1. [## Analytic cases](/cases/)
+1. [**Lists of analytic cases**](/cases/)
 
-2. [## Methods ](/methods/)
+2. [**Differents methods tested on it**](/methods/)
 
-3. [## Results ](/results/)
+3. [**Results**](/results/)
 
