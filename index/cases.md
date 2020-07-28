@@ -4,9 +4,11 @@ title: Lorem Ipsum
 permalink: /cases/
 ---
 
-The table below summarize the proposed test cases characteristics. 
+The table below summarize the proposed test cases. 
 
-You can click on a function name to view full definition.
+You can view the full description of a case by clicking on its name.
+
+[b01](/cases/b01/)
 
 |                                                                                                                                                        |           |            |           |          |            |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|------------|-----------|----------|------------|
