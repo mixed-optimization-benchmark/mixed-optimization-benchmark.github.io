@@ -1,5 +1,5 @@
 ---
 layout: page
-title: Branin 1
+title: EVD 52
 permalink: /cases/evd/
 ---
