@@ -14,6 +14,6 @@ Lorem ipsum dolorem sit amet
 <p>README.txt</p>
 <p>&nbsp;</p>
 <div id="list">
-  <p><iframe src="README.txt" frameborder="0" height="400"
+  <p><iframe src="./README.txt" frameborder="0" height="400"
       width="95%"></iframe></p>
 </div>
