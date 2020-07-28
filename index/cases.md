@@ -8,6 +8,7 @@ The table below summarize the proposed test cases. ([excel](https://github.com/m
 
 You can view the full description of a case by clicking on its name.
 
+[Branin\_1\](/cases/b01/) 
 |Paper                                                                                                                                                   |Name                        |\# Cont. var|\# Int. var|#cate. var|Constraints?|
 |--------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------|------------|-----------|----------|------------|
 |Overview and Comparison of Gaussian Process-Based Surrogate Models for Mixed Continuous and Discrete Variables: Application on Aerospace Design Problems|
