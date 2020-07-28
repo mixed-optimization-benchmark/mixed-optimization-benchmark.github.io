@@ -6,8 +6,8 @@ permalink: /lorem/
 
 Lorem ipsum dolorem sit amet
 
-![test](./generator/cases/b01_prob.py)
+![test](https://github.com/mixed-optimization-benchmark/mixed-optimization-benchmark.github.io/blob/master/generator/cases/b01_prob.py)
 
 This site was built using [GitHub Pages](https://pages.github.com/).
 
-![alt text](./Cas\ test/)
+![alt text](https://github.com/mixed-optimization-benchmark/mixed-optimization-benchmark.github.io/blob/master/Cas%20test/Branin_1.PNG)
