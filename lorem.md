@@ -14,3 +14,4 @@ ok
 ![alt text](https://github.com/mixed-optimization-benchmark/mixed-optimization-benchmark.github.io/blob/master/Cas%20test/Branin_1.PNG)
 
 ok
+<img align="left" src="./Cas%20test/Branin_1.PNG" >
