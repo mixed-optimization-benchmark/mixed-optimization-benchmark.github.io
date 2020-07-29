@@ -3,6 +3,10 @@ layout: page
 title: Spiral
 permalink: /cases/sp/
 ---
+### [← back](/cases/)
+### [← home](/index/)
+
+
 # Spiral
 From: Miguel Munoz Zuniga & Delphine Sinoquet (2020) Global optimization for mixed categorical-continuous variables based on Gaussian process models with a randomized categorical space exploration step, INFOR: Information Systems and Operational Research, 58:2, 310-341, DOI: 10.1080/03155986.2020.1730677
 
