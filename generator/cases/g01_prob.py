@@ -10,18 +10,19 @@ def f_obj(X) :
     point: array_like
         point to evaluate
     """
-    x1= X[:, 0]
-    x2= X[:, 1]
+    x1= X[:, 0].astype(float)
+    x2= X[:, 1].astype(float)
   #  caté 1
-    c1=X[:,2]
-    c2=X[:,3]
-    c3=X[:,4]
-
+    cate1=X[:,2]
+    c1=(cate1=="1")
+    c2=(cate1=="2")
+    c3=(cate1=="3")
+   
   #  caté 2   
-    c4=X[:,5]
-    c5=X[:,6]
-    c6=X[:,7]
-  
+    cate1=X[:,3]
+    c4=(cate1=="1")
+    c5=(cate1=="2")
+    c6=(cate1=="3") 
            
     def H(x1,x2,x3,x4) : 
         h=53.3108+0.184901*x1-5.02914*x1**3*10**(-6)+7.72522*x1**4*10**(-8)-\
@@ -66,7 +67,7 @@ def get_case():
     
     # design variables
     vartype=["cont","cont",("cate",3),("cate",3)]
-    xlimits = np.array([ [0.0,100.0],[0.0,100.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0]])
+    xlimits = np.array([ [0.0,100.0],[0.0,100.0],["1","2","3"],["1","2","3"]])
     design_variables={"vartype":vartype, "bounds": xlimits}
            
     

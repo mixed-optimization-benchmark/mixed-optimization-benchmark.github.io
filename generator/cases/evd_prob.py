@@ -10,16 +10,17 @@ def f_obj(X) :
     point: array_like
         point to evaluate
     """
-    x1=X[:,0]
-    x2=X[:,1]
-    x3=X[:,2]
+    x1=X[:,0].astype(float)
+    x2=X[:,1].astype(float)
+    x3=X[:,2].astype(float)
   #  caté 1
-    c1=X[:,3]
-    c2=X[:,4]
-    c3=X[:,5]
-    c4=X[:,6]
-    c5=X[:,7]
-    c6=X[:,8]
+    c=X[:,3]
+    c1=(c=='1')
+    c2=(c=='2')
+    c3=(c=='3')
+    c4=(c=='4')
+    c5=(c=='5')
+    c6=(c=='6')
     
     
     if (np.size(c1)==(np.sum(c1)+np.sum(c2)+np.sum(c3)+np.sum(c4)+np.sum(c5)+np.sum(c6))):
@@ -52,7 +53,7 @@ def get_case():
     
     # design variables
     vartype=["cont","cont","cont",("cate",6)]
-    xlimits = np.array([[-5.0,5.0],[-5.0,5.0],[-5.0,5.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0]])
+    xlimits = np.array([[-5.0,5.0],[-5.0,5.0],[-5.0,5.0],['1','2','3','4','5','6']])
     design_variables={"vartype":vartype, "bounds": xlimits}
            
    # solution

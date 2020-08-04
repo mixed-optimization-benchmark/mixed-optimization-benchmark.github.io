@@ -11,14 +11,16 @@ def f_obj(X) :
         point to evaluate
     """
     PI = 3.14159265358979323846
-    x1= X[:, 0]
-    x2= X[:, 1]
+    x1= X[:, 0].astype(float)
+    x2= X[:, 1].astype(float)
   #  caté 1
-    c1=X[:,2]
-    c2=X[:,3]
-  #  caté 2   
-    c3=X[:,4]
-    c4=X[:,5]
+    cate1=X[:,2]
+    c1=(cate1=="1")
+    c2=(cate1=="2")
+  #  caté 2 
+    cate2=X[:,3]  
+    c3=(cate2=="1")
+    c4=(cate2=="2")
   
     h=(((15*x2-5/(4*PI**2)*(15*x1-5)**2+ 5/PI*(15*x1-5) -6)**2 +\
           10*(1-1/(8*PI))*np.cos(15*x1-5) + 10)- 54.8104)/51.9496
@@ -49,7 +51,7 @@ def get_case():
     
     # design variables
     vartype=["cont","cont",("cate",2),("cate",2)]
-    xlimits = np.array([ [0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0]])
+    xlimits = np.array([ [0.0,1.0],[0.0,1.0],["1","2"],["1","2"]])
     design_variables={"vartype":vartype, "bounds": xlimits}
            
    # solution

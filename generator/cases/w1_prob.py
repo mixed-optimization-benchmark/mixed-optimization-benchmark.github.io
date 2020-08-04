@@ -10,20 +10,21 @@ def f_obj(X) :
     point: array_like
         point to evaluate
     """
-    x1=X[:,0]
-    x2=X[:,1]
-    x3=X[:,2]
-    x4=X[:,3]
-    x5=X[:,4]
-    x6=X[:,5]
-    x7=X[:,6]
+    x1=X[:,0].astype(float)
+    x2=X[:,1].astype(float)
+    x3=X[:,2].astype(float)
+    x4=X[:,3].astype(float)
+    x5=X[:,4].astype(float)
+    x6=X[:,5].astype(float)
+    x7=X[:,6].astype(float)
     
   #  caté 1
-    c1=X[:,7]
-    c2=X[:,8]
-    c3=X[:,9]
-    c4=X[:,10]
-    c5=X[:,11]
+    c=X[:,7]
+    c1=(c=='1')
+    c2=(c=='2')
+    c3=(c=='3')
+    c4=(c=='4')
+    c5=(c=='5')
     
     if (np.size(c1)==(np.sum(c1)+np.sum(c2)+np.sum(c3)+np.sum(c4)+np.sum(c5))):
         y=1*(  (x1-10)**2  +5* (x2-12)**2+x3**4 +3*(x4-11)**2+10*x5**6+7*x6**2+2*x7**4-4*x6*x7 -10*x6-8*x7 ) +\
@@ -56,7 +57,7 @@ def get_case():
     
     # design variables
     vartype=["cont","cont","cont","cont","cont","cont","cont",("cate",5)]
-    xlimits = np.array([ [-5.0,5.0],[-5.0,5.0],[-5.0,5.0],[-5.0,5.0],[-5.0,5.0],[-5.0,5.0],[-5.0,5.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0]])
+    xlimits = np.array([ [-5.0,5.0],[-5.0,5.0],[-5.0,5.0],[-5.0,5.0],[-5.0,5.0],[-5.0,5.0],[-5.0,5.0],["1","2","3","4","5"]])
     design_variables={"vartype":vartype, "bounds": xlimits}
            
    # solution

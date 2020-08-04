@@ -10,12 +10,13 @@ def f_obj(X) :
     point: array_like
         point to evaluate
     """
-    x1=X[:,0]
-    x2=X[:,1]
+    x1=X[:,0].astype(float)
+    x2=X[:,1].astype(float)
  
   #  caté 1
-    c1=X[:,2]
-    c2=X[:,3]
+    c=X[:,2]
+    c1= (c=='1')
+    c2=(c=='2')
     
     
     if (np.size(c1)==(np.sum(c1)+np.sum(c2))):
@@ -47,7 +48,7 @@ def get_case():
     
     # design variables
     vartype=["cont","cont",("cate",2)]
-    xlimits = np.array([[-5.0,5.0],[-5.0,5.0],[0.0,1.0],[0.0,1.0]])
+    xlimits = np.array([[-5.0,5.0],[-5.0,5.0],["1","2"]])
     design_variables={"vartype":vartype, "bounds": xlimits}
            
    # solution

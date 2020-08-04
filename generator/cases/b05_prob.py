@@ -49,7 +49,7 @@ def get_case():
     
     # design variables
     vartype= ["int","cont"]
-    xlimits = np.array([[-5.0, 10.0],[0.0,15.0]])
+    xlimits = np.array([[-5, 10],[0.0,15.0]])
     design_variables={"vartype":vartype, "bounds": xlimits}
    # solution
     sol = {"value": 0.49398053, "tol": 1e-6}

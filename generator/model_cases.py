@@ -43,17 +43,18 @@ elif surr=='KRG' :
 
 
 
-nb_doe=20
-for DOE in [30,50,100,200,300]:   
- 
+#nb_doe=20
+#for DOE in [30,50,100,200,300]:   
+
+nb_doe=1
+for DOE in [30]:   
+
     for k in range(nb_doe) :
         n_doe=2*DOE
-        d=LHS(xlimits=xlimits, criterion="ese")
+        d=LHS(xlimits=s._relax_limits(xlimits), criterion="ese")
         x_data=d(n_doe)
         x_data=s._project_values(x_data)
-        y_data = f(x_data)
-            
-        
+        y_data = f(s._assign_labels(x_data,xlimits))
         x_doe=x_data[0:int(n_doe/2)]
         y_doe=y_data[0:int(n_doe/2)]
         filename= os.path.join(dir_name, base_save+"_" + str(k) +"_modval_DOE" +str(DOE)+ suffix_xdoe)
