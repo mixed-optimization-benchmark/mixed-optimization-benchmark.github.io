@@ -38,9 +38,9 @@ elif surr=='KRG' :
 
 
 #20,5,50
-n_optim=1
-n_doe=2
-n_iter = 2
+n_optim=20
+n_doe=5
+n_iter = 50
 print(n_iter)
 for k in range(n_optim):
     y_save=np.zeros(n_iter)

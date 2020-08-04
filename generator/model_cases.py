@@ -43,11 +43,9 @@ elif surr=='KRG' :
 
 
 
-#nb_doe=20
-#for DOE in [30,50,100,200,300]:   
+nb_doe=20
+for DOE in [30,50,100,200,300]:   
 
-nb_doe=1
-for DOE in [30]:   
 
     for k in range(nb_doe) :
         n_doe=2*DOE
