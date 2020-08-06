@@ -46,7 +46,6 @@ elif surr=='KRG' :
 nb_doe=20
 for DOE in [30,50,100,200,300]:   
 
-
     for k in range(nb_doe) :
         n_doe=2*DOE
         d=LHS(xlimits=s._relax_limits(xlimits), criterion="ese")

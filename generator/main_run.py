@@ -8,7 +8,7 @@ for name in namefun:
     runfile("optim_cases.py", args=name)
     #os.startfile("optim_scipy_cobyla_Gxx_casegenerator2.py ")
     runfile("model_cases.py", args=name)
-    
+        
     
     
        
