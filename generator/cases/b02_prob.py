@@ -1,5 +1,12 @@
 import numpy as np
-
+from smt.applications.mixed_integer import (
+    FLOAT,
+    INT,
+    ENUM,
+    MixedIntegerSamplingMethod,
+    MixedIntegerContext,
+    cast_to_mixed_integer
+)
 # Objective function
 def f_obj(X) :
     """
@@ -11,22 +18,32 @@ def f_obj(X) :
         point to evaluate
     """
     PI = 3.14159265358979323846
-    x1= X[:, 0].astype(float)
-    x2= X[:, 1].astype(float)
-    x3= X[:, 2].astype(float)
-    x4= X[:, 3].astype(float)
-    x5= X[:, 4].astype(float)
-    x6= X[:, 5].astype(float)
-    x7= X[:, 6].astype(float)
-    x8= X[:, 7].astype(float)
-    x9= X[:, 8].astype(float)
-    x10= X[:,9].astype(float)
+    
+    xtypes=[FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,(ENUM,2),(ENUM,2)]
+    xlimits = np.array([[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],["1","2"],["1","2"]] ,dtype='object')
+    mixint = MixedIntegerContext(xtypes, xlimits)
+    X_=np.zeros((X.shape),dtype=object)
+    i=0
+    for x in X : 
+        X_[i]=mixint.cast_to_mixed_integer(x)
+        i+=1
+    
+    x1= X_[:, 0].astype(float)
+    x2= X_[:, 1].astype(float)
+    x3= X_[:, 2].astype(float)
+    x4= X_[:, 3].astype(float)
+    x5= X_[:, 4].astype(float)
+    x6= X_[:, 5].astype(float)
+    x7= X_[:, 6].astype(float)
+    x8= X_[:, 7].astype(float)
+    x9= X_[:, 8].astype(float)
+    x10= X_[:,9].astype(float)
     #  caté 1
-    cate1=X[:,10]
+    cate1=X_[:,10]
     c1=(cate1=="1")
     c2=(cate1=="2")
   #  caté 2   
-    cate2=X[:,11]
+    cate2=X_[:,11]
     c3=(cate2=="1")
     c4=(cate2=="2")
   
@@ -59,15 +76,15 @@ def get_case():
          # default model
     mod_obj = {
         "type": "KPLS",
-        "corr": "squared_exponential",
-        "n_components": 5,
+        "corr": "squar_exp",
+        "n_components": 2,
     }
     
     
     # design variables
-    vartype=["cont","cont","cont","cont","cont","cont","cont","cont","cont","cont",("cate",2),("cate",2)]
-    xlimits = np.array([[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],["1","2"],["1","2"]] )
-    design_variables={"vartype":vartype, "bounds": xlimits}
+    xtypes=[FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,FLOAT,(ENUM,2),(ENUM,2)]
+    xlimits = np.array([[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],[0.0,1.0],["1","2"],["1","2"]] ,dtype='object')
+    design_variables={"xtypes":xtypes, "bounds": xlimits}
            
    # solution
     sol = {"value": -14.186036350718284, "tol": 1e-6}

@@ -1,5 +1,11 @@
 import numpy as np
-
+from smt.applications.mixed_integer import (
+    FLOAT,
+    INT,
+    ENUM,
+    MixedIntegerSamplingMethod,
+    cast_to_mixed_integer
+)
 # Objective function
 def f_obj(X) :
     """
@@ -42,15 +48,15 @@ def get_case():
          # default model
     mod_obj = {
         "type": "KRG",
-        "corr": "squared_exponential",
+        "corr": "squar_exp",
     }
     
     
     
     # design variables
-    vartype= ["int","cont"]
+    xtypes = [INT, FLOAT]
     xlimits = np.array([[-5, 10],[0.0,15.0]])
-    design_variables={"vartype":vartype, "bounds": xlimits}
+    design_variables={"xtypes":xtypes, "bounds": xlimits}
    # solution
     sol = {"value": 0.49398053, "tol": 1e-6}
     case = {

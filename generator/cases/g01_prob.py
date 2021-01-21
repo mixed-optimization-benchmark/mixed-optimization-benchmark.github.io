@@ -1,5 +1,12 @@
 import numpy as np
-
+from smt.applications.mixed_integer import (
+    FLOAT,
+    INT,
+    ENUM,
+    MixedIntegerSamplingMethod,
+    MixedIntegerContext,
+    cast_to_mixed_integer
+)
 # Objective function
 def f_obj(X) :
     """
@@ -10,16 +17,26 @@ def f_obj(X) :
     point: array_like
         point to evaluate
     """
-    x1= X[:, 0].astype(float)
-    x2= X[:, 1].astype(float)
+    xtypes=[FLOAT,FLOAT,(ENUM,3),(ENUM,3)]
+    xlimits = np.array([ [0.0,100.0],[0.0,100.0],["1","2","3"],["1","2","3"]],dtype='object')
+    mixint = MixedIntegerContext(xtypes, xlimits)
+    X_=np.zeros((X.shape),dtype=object)
+    i=0
+    for x in X : 
+        X_[i]=mixint.cast_to_mixed_integer(x)
+        i+=1
+    
+    
+    x1= X_[:, 0].astype(float)
+    x2= X_[:, 1].astype(float)
   #  caté 1
-    cate1=X[:,2]
+    cate1=X_[:,2]
     c1=(cate1=="1")
     c2=(cate1=="2")
     c3=(cate1=="3")
    
   #  caté 2   
-    cate1=X[:,3]
+    cate1=X_[:,3]
     c4=(cate1=="1")
     c5=(cate1=="2")
     c6=(cate1=="3") 
@@ -60,15 +77,15 @@ def get_case():
          # default model
     mod_obj = {
         "type": "KPLS",
-        "corr": "squared_exponential",
-        "n_components": 5,
+        "corr": "squar_exp",
+        "n_components": 2,
     }
     
     
     # design variables
-    vartype=["cont","cont",("cate",3),("cate",3)]
-    xlimits = np.array([ [0.0,100.0],[0.0,100.0],["1","2","3"],["1","2","3"]])
-    design_variables={"vartype":vartype, "bounds": xlimits}
+    xtypes=[FLOAT,FLOAT,(ENUM,3),(ENUM,3)]
+    xlimits = np.array([ [0.0,100.0],[0.0,100.0],["1","2","3"],["1","2","3"]],dtype='object')
+    design_variables={"xtypes":xtypes, "bounds": xlimits}
            
     
    # solution

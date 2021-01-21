@@ -8,6 +8,12 @@ from smt.utils.options_dictionary import OptionsDictionary
 from smt.applications.application import SurrogateBasedApplication
 from smt.utils.misc import compute_rms_error
 from smt.sampling_methods import LHS
+from smt.applications.mixed_integer import (
+    MixedIntegerContext,
+    FLOAT,
+    ENUM,
+    INT,
+)
 
 ng=sys.argv[1]
 print('Function ', ng)
@@ -25,33 +31,40 @@ try:
 except OSError:
     pass
 case=_import_case(ng)()
-
 xlimits = case['vars']['bounds']
-vartype=case['vars']['vartype']
+xtypes=case['vars']['xtypes']
 f=case['f_obj']
+mixint = MixedIntegerContext(xtypes, xlimits)
 
 tunnel=0
 criterion = "EI"  #'EI' or 'SBO' or 'UCB'
 qEI = "KB"
-surr=  case["models"]["type"]
 
+surr=  case["models"]["type"]
+corr=  case["models"]["corr"]
 if surr== 'KPLS':
     n_comp=  case["models"]["n_components"]
-    s=KPLS(print_global=False,n_comp=n_comp,vartype=vartype)
+    s=KPLS(print_global=False,n_comp=n_comp,corr=corr,eval_noise=True)
 elif surr=='KRG' :
-    s=KRG(print_global=False,vartype=vartype)
+    s=KRG(print_global=False,corr=corr)
+
+sm = mixint.build_surrogate_model(s)
 
 
 
-nb_doe=20
-for DOE in [30,50,100,200,300]:   
+nb_doe= 2 #we take the mean of several repetitions 
+
+#nb_doe=20
+#for DOE in [30,50,100,200,300]:   
+for DOE in [30,40]:   
+
 
     for k in range(nb_doe) :
         n_doe=2*DOE
-        d=LHS(xlimits=s._relax_limits(xlimits), criterion="ese")
-        x_data=d(n_doe)
-        x_data=s._project_values(x_data)
-        y_data = f(s._assign_labels(x_data,xlimits))
+        sampling = mixint.build_sampling_method(LHS, criterion="ese")
+        x_data=sampling(n_doe)  
+        y_data = f(x_data)
+        
         x_doe=x_data[0:int(n_doe/2)]
         y_doe=y_data[0:int(n_doe/2)]
         filename= os.path.join(dir_name, base_save+"_" + str(k) +"_modval_DOE" +str(DOE)+ suffix_xdoe)
@@ -67,9 +80,9 @@ for DOE in [30,50,100,200,300]:
         np.save(filename, y_val_true) 
         
               
-        s.set_training_values(x_doe, y_doe)
-        s.train()
-        y_gp =s.predict_values(x_val)
+        sm.set_training_values(x_doe, y_doe)
+        sm.train()
+        y_gp =sm.predict_values(x_val)
         filename= os.path.join(dir_name, base_save+"_"+  str(k)  +"_modval_DOE" +str(DOE)+suffix_yvalest)
         np.save(filename, y_gp) 
         

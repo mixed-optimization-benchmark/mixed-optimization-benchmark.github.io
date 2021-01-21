@@ -1,5 +1,12 @@
 import numpy as np
-
+from smt.applications.mixed_integer import (
+    FLOAT,
+    INT,
+    ENUM,
+    MixedIntegerSamplingMethod,
+    MixedIntegerContext,
+    cast_to_mixed_integer
+)
 # Objective function
 def f_obj(X) :
     """
@@ -10,11 +17,22 @@ def f_obj(X) :
     point: array_like
         point to evaluate
     """
-    x1=X[:,0].astype(float)
-    x2=X[:,1].astype(float)
+    
+    xtypes=[FLOAT,FLOAT,(ENUM,2)]
+    xlimits = np.array([[-5.0,5.0],[-5.0,5.0],["1","2"]],dtype='object')
+    mixint = MixedIntegerContext(xtypes, xlimits)
+    X_=np.zeros((X.shape),dtype=object)
+    i=0
+    for x in X : 
+        X_[i]=mixint.cast_to_mixed_integer(x)
+        i+=1
+    
+    
+    x1=X_[:,0].astype(float)
+    x2=X_[:,1].astype(float)
  
   #  caté 1
-    c=X[:,2]
+    c=X_[:,2]
     c1= (c=='1')
     c2=(c=='2')
     
@@ -41,15 +59,15 @@ def get_case():
          # default model
     mod_obj = {
         "type": "KRG",
-        "corr": "squared_exponential",
+        "corr": "squar_exp",
     }
     
      
     
     # design variables
-    vartype=["cont","cont",("cate",2)]
-    xlimits = np.array([[-5.0,5.0],[-5.0,5.0],["1","2"]])
-    design_variables={"vartype":vartype, "bounds": xlimits}
+    xtypes=[FLOAT,FLOAT,(ENUM,2)]
+    xlimits = np.array([[-5.0,5.0],[-5.0,5.0],["1","2"]],dtype='object')
+    design_variables={"xtypes":xtypes, "bounds": xlimits}
            
    # solution
     sol = {"value": 0, "tol": 1e-6}

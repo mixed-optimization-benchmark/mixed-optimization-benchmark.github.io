@@ -1,5 +1,12 @@
 import numpy as np
-
+from smt.applications.mixed_integer import (
+    FLOAT,
+    INT,
+    ENUM,
+    MixedIntegerSamplingMethod,
+    MixedIntegerContext,
+    cast_to_mixed_integer
+)
 # Objective function
 def f_obj(X) :
     """
@@ -11,9 +18,21 @@ def f_obj(X) :
         point to evaluate
     """
     PI = 3.14159265358979323846
-    x= X[:, 0].astype(float)
+
+    xtypes = [FLOAT, (ENUM,10)]
+    xlimits = np.array([ [0.0,1.0],["1","2","3","4","5","6","7","8","9","10"]],dtype='object')
+    mixint = MixedIntegerContext(xtypes, xlimits)
+    X_=np.zeros((X.shape),dtype=object)
+    
+    i=0
+    for x in X : 
+        X_[i]=mixint.cast_to_mixed_integer(x)
+        i+=1
+        
+    x= X_[:, 0].astype(float)
   #  caté 1
-    c=X[:,1]
+    c=X_[:,1]
+        
     c1=(c=='1')
     c2=(c=='2')
     c3=(c=='3')
@@ -49,15 +68,16 @@ def get_case():
          # default model
     mod_obj = {
         "type": "KPLS",
-        "corr": "squared_exponential",
-        "n_components": 5,
+        "corr": "squar_exp",
+        "n_components": 2,
     }
     
     
     # design variables
-    vartype=["cont",("cate",10)]
-    xlimits = np.array([ [0.0,1.0],["1","2","3","4","5","6","7","8","9","10"]])
-    design_variables={"vartype":vartype, "bounds": xlimits}
+    xtypes = [FLOAT, (ENUM,10)]
+
+    xlimits = np.array([ [0.0,1.0],["1","2","3","4","5","6","7","8","9","10"]],dtype='object')
+    design_variables={"xtypes":xtypes, "bounds": xlimits}
            
    # solution
     sol = {"value": -2.3296038673969974, "tol": 1e-6}
