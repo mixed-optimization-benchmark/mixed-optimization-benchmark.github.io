@@ -13,6 +13,6 @@ The modification made by Zuniga and Sinoquet is to considerate a categorical var
 
 We made the assumption that the continuous variables are between [-5,5] because the original problem was left unbounded.
 
-Reference solution: 245
+Reference solution: -114.705
 
 <img align="left" src="https://raw.githubusercontent.com/mixed-optimization-benchmark/mixed-optimization-benchmark.github.io/master/Cas%20test/Rosen-Suzuki.PNG" >
