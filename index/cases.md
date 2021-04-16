@@ -40,4 +40,4 @@ You can view the full description of a case by clicking on its name.
 |                                                                                                                                                        |[Hal\_4](/cases/hal04/)   |5           |0          |(3,2,2)   |No          |
 |                                                                                                                                                        |[Hal\_5](/cases/hal05/)   |2           |0          |(3)       |No          |
 |A global method for mixed categorical optimization with catalogs                                                                                        |                          
-|                                                                                                                                                        |Vanaret](/cases/vanaret/) |1           |2          |0         |Yes         |
+|                                                                                                                                                        |[Vanaret](/cases/vanaret/) |1           |2          |0         |Yes         |
